@@ -1,21 +1,22 @@
-# domcloud.yml — React + Vite (SPA)
+# Build y deploy de React + Vite en DomCloud
 source: clear
 root: public_html
 features:
   - nodejs
 
-# Construye y copia el build a public_html/
 commands:
+  # 1) Instalar deps y construir
   - npm ci
   - npm run build
+  # 2) Publicar el build en la carpeta servida por Nginx
   - rm -rf public_html/*
   - cp -r dist/* public_html/
 
 nginx:
   locations:
-    # Sirve archivos tal cual si existen (assets, imágenes, etc.)
+    # Archivos estáticos
     - match: ~ \.[^\/]+$
       try_files: $uri =404
-    # Fallback para SPA (BrowserRouter): manda todo a index.html
+    # Fallback para SPA (react-router-dom)
     - match: /
       try_files: $uri /index.html
