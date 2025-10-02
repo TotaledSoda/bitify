@@ -1,0 +1,21 @@
+# domcloud.yml — React + Vite (SPA)
+source: clear
+root: public_html
+features:
+  - nodejs
+
+# Construye y copia el build a public_html/
+commands:
+  - npm ci
+  - npm run build
+  - rm -rf public_html/*
+  - cp -r dist/* public_html/
+
+nginx:
+  locations:
+    # Sirve archivos tal cual si existen (assets, imágenes, etc.)
+    - match: ~ \.[^\/]+$
+      try_files: $uri =404
+    # Fallback para SPA (BrowserRouter): manda todo a index.html
+    - match: /
+      try_files: $uri /index.html
