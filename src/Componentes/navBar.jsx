@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 
-const NavBar = () => {
+const navBar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const toggleDropdown = () => {
@@ -73,4 +73,4 @@ const NavBar = () => {
     );
 };
 
-export default NavBar;
+export default navBar;

@@ -1,27 +1,27 @@
 import { Routes, Route } from 'react-router-dom';
-import NavBar from './Componentes/navBar.jsx';
-import Footer from './Componentes/footer.jsx';
-import Inicio from './Componentes/inicio.jsx';
+import navBar from './Componentes/navBar.jsx';
+import footer from './Componentes/footer.jsx';
+import Dashboard from './Componentes/dashboard.jsx';
 import DesarrolloWeb from './Componentes/DesarrolloWeb.jsx';
-import Backgroun from './Componentes/Backgroun.jsx';
+import Background from './Componentes/Background.jsx';
 import About from './Componentes/About.jsx';
 import Contacto from './Componentes/Contacto.jsx';
 
 function App() {
   return (
     <div>
-      <NavBar />
+      <navBar />
       <Routes>
-        <Route path="/" element={<Inicio />} />           {/* ruta raíz */}
-        <Route path="/Inicio" element={<Inicio />} />     {/* opcional */}
+        <Route path="/" element={<Dashboard />} />           {/* ruta raíz */}
+        <Route path="/inicio" element={<Dashboard />} />     {/* opcional */}
         <Route path="/DesarrolloWeb" element={<DesarrolloWeb />} />
         <Route path="/About" element={<About />} />
         <Route path="/Contacto" element={<Contacto />} />
 
       </Routes>
       
-      <Footer />
-      <Backgroun />
+      <footer />
+      <Background />
     </div>
   );
 }
